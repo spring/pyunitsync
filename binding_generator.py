@@ -73,7 +73,7 @@ def my_module_gen(inputdir,outputdir,includedirs):
 	
 	with open(generator_fn,'wb') as output:#ensures file is closed after output
 		module = module_parser.parse([os.path.join( inputdir, 'unitsync_api.h')], include_paths=includedirs ,
-				includes=['"../unitsync.h"','"../unitsync_api.h"','<Numeric/arrayobject.h>'],)
+				includes=['"../unitsync.h"','"../unitsync_api.h"'],)
 		module.add_function("GetMinimap", BufferReturn("unsigned short*", "1024*1024"), [Parameter.new('const char*', 'fileName'),Parameter.new('int', 'mipLevel')])
 		module.generate( FileCodeSink(output) )
 
