@@ -55,6 +55,10 @@ if (UNITSYNC_PYTHON_WRAPPER)
 		ADD_LIBRARY(${pythonUnitsyncTarget} MODULE "${pythonWrapperCpp}" ${transformed_unitsync_files})
 		SET_TARGET_PROPERTIES(${pythonUnitsyncTarget} PROPERTIES PREFIX "")
 		TARGET_LINK_LIBRARIES(${pythonUnitsyncTarget} unitsync )
+		IF( WIN32 )
+			#somewhat hackish, but I have no idea why the libs are either not found or not linked on win otherwise
+			TARGET_LINK_LIBRARIES(${pythonUnitsyncTarget} ${MINGWLIBS}/dll/python25.dll )
+		ENDIF( WIN32 )
 
 		INSTALL(TARGETS ${pythonUnitsyncTarget} DESTINATION ${LIBDIR})
 	else  (PYTHONLIBS_FOUND AND PYTHONINTERP_FOUND AND python_pybindgen_FOUND AND python_pygccxml_FOUND)
