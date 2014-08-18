@@ -1,4 +1,4 @@
-set(UNITSYNC_PYTHON_WRAPPER TRUE CACHE BOOL "Create a python wrapper for unitsync, if python is found on the system")
+option(UNITSYNC_PYTHON_WRAPPER "Create a python wrapper for unitsync, if python is found on the system" TRUE)
 if (UNITSYNC_PYTHON_WRAPPER)
 
 #	ADD_LIBRARY(static-unitsync STATIC ${unitsync_files})
