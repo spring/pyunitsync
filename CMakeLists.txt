@@ -34,16 +34,16 @@ if (UNITSYNC_PYTHON_WRAPPER)
 			COMMENT
 				"  ${pythonUnitsyncTarget}: Generating the wrapper script" VERBATIM
 			)
-		ADD_CUSTOM_TARGET( "test-${pythonUnitsyncTarget}" 
-			COMMAND 
+		ADD_CUSTOM_TARGET( "test-${pythonUnitsyncTarget}"
+			COMMAND
 				"${PYTHON_EXECUTABLE}" "${pythonWrapperTest}"
 			DEPENDS
 				${pythonUnitsyncTarget}
 			WORKING_DIRECTORY
 				"${CMAKE_BINARY_DIR}"
 			)
-		ADD_CUSTOM_TARGET( "test-${pythonUnitsyncTarget}-all" 
-			COMMAND 
+		ADD_CUSTOM_TARGET( "test-${pythonUnitsyncTarget}-all"
+			COMMAND
 				"${PYTHON_EXECUTABLE}" "${pythonWrapperTest}" "1"
 			DEPENDS
 				${pythonUnitsyncTarget}
@@ -51,7 +51,7 @@ if (UNITSYNC_PYTHON_WRAPPER)
 				"${CMAKE_BINARY_DIR}"
 			)
 
-		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS} "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}")		
+		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS} "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}")
 		ADD_LIBRARY(${pythonUnitsyncTarget} MODULE "${pythonWrapperCpp}" ${transformed_unitsync_files})
 		SET_TARGET_PROPERTIES(${pythonUnitsyncTarget} PROPERTIES PREFIX "")
 		TARGET_LINK_LIBRARIES(${pythonUnitsyncTarget} unitsync )
