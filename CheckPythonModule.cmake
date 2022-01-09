@@ -9,7 +9,7 @@ macro(CheckPythonModule module)
 		RESULT_VARIABLE 
 			python_${module}_RESULT_VAR
 		)
-	IF( python_${module}_RESULT_VAR EQUAL 0 )
+	if ( python_${module}_RESULT_VAR EQUAL 0 )
 		set( python_${module}_FOUND 1 )
-	ENDIF( python_${module}_RESULT_VAR EQUAL 0 )
-endmacro(CheckPythonModule)
+	endif ()
+endmacro()
